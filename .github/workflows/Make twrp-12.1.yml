@@ -17,7 +17,7 @@ jobs:
         sudo apt -y autoclean
         sudo apt clean
     - name: Maximize Build Space
-      uses: easimon/maximize-build-space@master
+      uses: easimon/maximize-build-space@v8
       with:
         root-reserve-mb: 1024
         swap-size-mb: 10240
@@ -27,7 +27,7 @@ jobs:
         remove-haskell: 'true'
 
     - name: Check Out
-      uses: actions/checkout@main
+      uses: actions/checkout@4.1.1
 
     - name: Set output
       run: echo "name=date::$(date +%F)"
@@ -74,7 +74,7 @@ jobs:
     - name: Clone Device Tree
       run: |
         cd ${GITHUB_WORKSPACE}/workspace
-        git clone https://github.com/D8100-9000-TWRP-Device-Tree/device_xiaomi_xaga-TWRP.git -b twrp-12.1_5.10.66 ./device/xiaomi/xaga
+        git clone https://github.com/D8100-9000-TWRP-Device-Tree/device_xiaomi_xaga-TWRP.git -b twrp-12.1_A13 ./device/xiaomi/xaga
     - name: Building
       run: |
         cd ${GITHUB_WORKSPACE}/workspace
@@ -82,7 +82,7 @@ jobs:
         lunch twrp_xaga-eng
         mka vendorbootimage -j$(nproc --all)
     - name: Upload Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v3.1.3
       with:
         name: xaga_twrp-12.1
         path: workspace/out/target/product/xaga/*.img
