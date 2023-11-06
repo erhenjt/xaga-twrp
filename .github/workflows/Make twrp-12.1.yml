@@ -16,6 +16,10 @@ jobs:
         sudo apt -y autoremove --purge
         sudo apt -y autoclean
         sudo apt clean
+        sudo apt update
+        sudo apt upgrade -y
+        sudo apt dist-upgrade -y
+        sudo apt full-upgrade -y
     - name: Maximize Build Space
       uses: easimon/maximize-build-space@v8
       with:
