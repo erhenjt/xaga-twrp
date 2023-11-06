@@ -31,7 +31,7 @@ jobs:
         remove-haskell: 'true'
 
     - name: Check Out
-      uses: actions/checkout@4.1.1
+      uses: actions/checkout@4.1
 
     - name: Set output
       run: echo "name=date::$(date +%F)"
