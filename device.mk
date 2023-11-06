@@ -31,15 +31,15 @@ AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS := \
     boot \
     dtbo \
-    system \
-    system_ext \
     product \
     vendor \
     odm \
+    odm_dlkm \
     vbmeta \
+    vendor_boot \
+    vendor_dlkm \
     vbmeta_system \
     vbmeta_vendor
-
 # Update engine
 PRODUCT_PACKAGES += \
     checkpoint_gc \
@@ -60,6 +60,12 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES_DEBUG += \
     bootctrl
+# Additional Target Libraries
+TARGET_RECOVERY_DEVICE_MODULES += \
+    android.hardware.keymaster@4.1
+
+TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.1.so
 
 # Health
 PRODUCT_PACKAGES += \
